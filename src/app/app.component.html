@@ -1,0 +1,52 @@
+<body>
+
+<md-toolbar color="primary">
+ <span>{{title}}</span>&nbsp;&nbsp;&nbsp;
+ <span> <a href="#"><strong>Home</strong></a></span>&nbsp;&nbsp;&nbsp;
+ <span><a href="#"><strong>MyFavourites</strong></a></span>
+
+</md-toolbar>
+
+  <div class="jumbotron">
+  <div class="form-group">
+ 
+    <label class="title-class">Search for a movie.. </label><br>
+<input (keyup)="onKey($event)">
+<!--<p>{{values}}</p>-->
+<button class="btn-warning" (click)="myMovieSearch(values)">search</button><br>
+</div>
+    </div>
+
+
+<div class="container search-results"
+           infinite-scroll
+           [infiniteScrollDistance]="scrollDistance"
+           [infiniteScrollThrottle]="throttle"
+           (scrolled)="onScroll()">
+
+ 
+   <md-card id="card" *ngFor="let val of getdata">
+     <div class="row">
+       <div class="col-md-5">
+  <img src="https://image.tmdb.org/t/p/w500{{val.poster_path}}" alt="image" />
+  </div>
+
+  <div class="col-md-7">
+
+
+<md-card-title class="panel panel-default"><strong>Title: </strong>{{val.title}}</md-card-title><br>
+ <md-card-title><strong>ReleaseDate: </strong>{{val.release_date}}</md-card-title><br>
+ <md-card-title><strong>Popularity: </strong>{{val.popularity}}</md-card-title><br>
+  <md-card-title><strong>Ratings: </strong>{{val.vote_average}}</md-card-title><br>
+  <md-card-title><strong>Genre: </strong>{{genreMethod(val.genre_ids)}}</md-card-title><br>
+ <md-card-title class="well"><strong>Overview: </strong>{{val.overview}}</md-card-title><br>
+  </div>
+     </div>
+   </md-card>
+
+</div>
+ 
+  
+</body>
+
+  

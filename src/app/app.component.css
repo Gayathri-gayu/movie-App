@@ -1,0 +1,29 @@
+
+img{
+    width: 100%;
+}
+.jumbotron
+{
+    background-color:#004d99;
+}
+
+.title-class
+{
+    
+    color:white;
+    font-size: 25px;
+    font-family: 'Redressed', cursive;
+}
+body {
+    overflow-x: hidden;
+    
+}
+.form-group
+{
+    padding-left:5%;
+}
+md-toolbar
+{
+    font-size: 25px;   
+     font-family: 'Redressed', cursive;
+}
