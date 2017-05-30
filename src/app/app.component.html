@@ -22,10 +22,11 @@
            infinite-scroll
            [infiniteScrollDistance]="scrollDistance"
            [infiniteScrollThrottle]="throttle"
-           (scrolled)="onScroll()">
+           (scrolled)="onScroll(values,page)">
 
- 
+  <!--<div *ngIf="movie != undefined && movie.Response == 'True'">-->
    <md-card id="card" *ngFor="let val of getdata">
+     <!--<div *ngIf="val != undefined && val.Response == 'True'">-->
      <div class="row">
        <div class="col-md-5">
   <img src="https://image.tmdb.org/t/p/w500{{val.poster_path}}" alt="image" />
@@ -42,10 +43,15 @@
  <md-card-title class="well"><strong>Overview: </strong>{{val.overview}}</md-card-title><br>
   </div>
      </div>
+ <!--<div *ngIf="movie != undefined && movie.Response == 'False'">
+      <p>**Error** Movie not found</p>
+    <div>-->
+
    </md-card>
 
+
 </div>
- 
+
   
 </body>
 
