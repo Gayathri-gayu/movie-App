@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import {HttpService} from './app.service';
-import {genre} from './genre-main';
-import {genres} from './genre-list';
+// import {genre} from './genre-main';
+// import {genres} from './genre-list';
  import { InfiniteScroll } from 'angular2-infinite-scroll';
+ import {GenreService} from './genre.service';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +11,7 @@ import {genres} from './genre-list';
  
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  providers:[HttpService],
+  providers:[HttpService,GenreService],
 
 })
 export class HttpTestComponent{
@@ -21,13 +22,13 @@ export class HttpTestComponent{
   scrollDistance=20;
   throttle=3000;
   totalpage:number;
- 
+ new_genre=[];
 
 
   onKey(event:any){
     this.values=event.target.value;
   }
-  constructor(private _httpService:HttpService){}
+  constructor(private _httpService:HttpService,private genreservice:GenreService){}
   myMovieSearch(values,page){
     this._httpService.getHttp(values)
     .subscribe(data=>{this.getdata=data.results;
@@ -36,10 +37,15 @@ export class HttpTestComponent{
     ()=>console.log("finished"),
     );
 
+    this.genreservice.getGenre()
+    .subscribe(data=>this.new_genre=data.genres,
+    ()=>console.log("finished"),
+    );
+
   }
   genreMethod(val){
     let arr=[];
-    genres.forEach(function(api)
+   this.new_genre .forEach(function(api)
     {
       if (val.includes(api.id))
       {
