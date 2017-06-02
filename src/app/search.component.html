@@ -1,0 +1,81 @@
+<div class=" jumbotron bg">
+
+   <div class=" form-group container">
+     
+     <label class="text-align">Search for a movie!!</label>
+  <input [(ngModel)]="value" placeholder="movie Name" class="form-control" /><br>
+   <div >
+  <button  (click)="onTestGet(value)" class="btn btn-warning">Search</button></div>
+    
+  </div>
+  
+  
+  <div class="container"
+            infinite-scroll
+            [infiniteScrollDistance]="scrolldistance"
+            [infiniteScrollThrottle]="throttle"
+            (scrolled)="onScroll(value)">
+            
+      
+<div *ngIf="getData" else elseBlock>
+  
+    <md-card id="card" *ngFor='let re of getData;let index=index' class="col-md-6 mycard">
+      
+     <div class="row">
+
+       <div class="col-md-12">
+        <md-card-title class="panel panel-default">Title: {{re.title}}<button class="glyphicon glyphicon-star pull-right" (click)=this._fav.getFavourite()></button></md-card-title>
+       </div>
+       <div class="col-md-6">
+    
+    <img src="https://image.tmdb.org/t/p/w500{{re.poster_path}}" alt="image" class="img-align">
+    
+       </div>
+       <div class="col-md-6">
+        <div class="row">
+        <h3> <span class="label label-info">Language</span></h3> 
+         <p style="font-size:18px;">{{re.original_language}}</p>
+        </div>  
+        <div class="row">
+         <h3><span class="label label-info">Popularity</span></h3> 
+         <p style="font-size:18px;">{{re.popularity}}</p>
+         </div>  
+         <div class="row">
+         <h3><span class="label label-info">Genre</span></h3> 
+         <p style="font-size:18px;">{{pushGenre(re.genre_ids)}}</p>
+         </div>  
+          
+       </div>
+       <div class="col-md-12" style="margin-top:10px;">
+         
+         <div class="panel-group">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4 class="panel-title">
+                <a data-toggle="collapse" href="#collapse{{index}}">Overview</a>
+              </h4>
+            </div>
+            <div id="collapse{{index}}" class=" panel-primary panel-body movie-overview">
+            <p >{{re.overview}}</p>
+            </div>
+        </div>
+  </div>
+               </div>
+     </div>
+    </md-card>
+</div>
+  
+  
+
+    <div *ngIf="MovieArray">
+     <div *ngFor='let val of MovieArray'>
+      <md-card-title class="panel panel-default">Title: {{val.a}}</md-card-title><br>
+    <md-card-title>Language: {{val.a}}</md-card-title><br>
+    <md-card-title>image: <img src="https://image.tmdb.org/t/p/w500{{val.b}}" alt="image" ></md-card-title><br> 
+    <md-card-title>Popularity: {{val.c}}</md-card-title><br>
+    <md-card-title>Overview: {{val.d}}</md-card-title><br> 
+     </div>
+     </div>
+  
+  </div>
+ </div>

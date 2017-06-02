@@ -1,39 +1,75 @@
+body{
+     background-image:linear-gradient( rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7) ),  url(./img.jpg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+  text-align: center;
+  color: #fff; 
+}
+.opaque-navbar {
+    background-color: #4065a0;
+    height: 60px;
+    border-bottom: 0px;
+    transition: background-color .5s ease 0s;
+}
 
-img{
-    width: 100%;
+.opaque-navbar.opaque {
+    background-color: white;
+    height: 60px;
+    transition: background-color .5s ease 0s;
 }
-.jumbotron
-{
-    background-color:#2d333d;
-    margin-bottom:0%;
+.navbar-brand{
+    padding: 0px;
 }
 
-.title-class
-{
-    color:white;
-    font-size: 25px;
-    font-family: 'Redressed', cursive;
+.navbar-toggle{
+    background-color:  #4065a0;
 }
-body {
-    overflow-x: hidden; 
+ .navbar-inverse .navbar-nav>li>a {
+     color: white;
+     }
+
+      .navbar-inverse .navbar-nav>li {
+     color: white;
+     font-family: 'Redressed', cursive;
+     }
+.pad{
+    padding-top: 15px;
+     color: white;
+     font-family: 'Redressed', cursive;; 
+     font-size: 25px;
 }
-.form-group
-{
-    padding-left:5%;
-}
-md-toolbar
-{
-    font-size: 25px;   
-    font-family: 'Redressed', cursive;
-}
-.container
-{
-font-size:16px;
-}
-.col-md-7
-{
-    font-size: 16px;
-    font-family: 'Redressed', cursive;
+
+     .navbar-inverse .navbar-nav>li>a:hover{
+        font-size: 35px;
+        background-color: #4065a0;   
+         }
 
 
+
+@media (max-width: 800px) {
+  
+  .opaque-navbar {
+    background-color: #EDBC43;
+    opacity: 0.9;
+    height: 60px;
+    transition: background-color .5s ease 0s;
 }
+}
+@media (max-width: 744px){
+.navbar-inverse .navbar-nav>li>a {
+     background-color:  #4065a0;
+     color: white;
+     }
+.navbar-inverse .navbar-nav>li {
+     background-color: #4065a0;
+     color: white;
+     }
+.navbar-collapse{
+    background-color: #4065a0;
+}
+ }

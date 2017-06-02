@@ -2,38 +2,47 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
- import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MaterialModule} from '@angular/material';
+import { InfiniteScrollModule } from 'angular2-infinite-scroll';
+import {RouterModule} from '@angular/router';
 import { MdButtonModule, MdCardModule, MdMenuModule, MdToolbarModule, MdIconModule, MdInputModule} from '@angular/material';
-import { MaterialModule} from '@angular/material';
-import { HttpTestComponent } from './app.component';
-import { InfiniteScrollModule } from 'ngx-infinite-scroll';
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import {RouterModule} from  '@angular/router';
-
+import {favoriteComponent} from './app.favorite';
+import { AppComponent } from './app.component';
+import { HTTPTestComponent } from './http-test.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {favouriteService} from './fav.service';
 
 @NgModule({
   declarations: [
-    HttpTestComponent,
-
+    AppComponent,
+    HTTPTestComponent,
+    favoriteComponent
   ],
   imports: [
     BrowserModule,
-    InfiniteScrollModule,
     FormsModule,
     HttpModule,
-     BrowserAnimationsModule,
     MdButtonModule,
     MdMenuModule,
     MdCardModule,
     MdToolbarModule,
     MdIconModule,
     MdInputModule,
-    MaterialModule
+    InfiniteScrollModule,
+    BrowserAnimationsModule,
+    RouterModule.forRoot([{
+      path:'Home',
+      component:HTTPTestComponent
+    },
+    {
+      path:'favorites',
+      component:favoriteComponent
+    }
+
+    ])
+
   ],
-  providers: [],
-  bootstrap: [HttpTestComponent]
+  providers: [favouriteService],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
-
- 
-platformBrowserDynamic().bootstrapModule(AppModule);
